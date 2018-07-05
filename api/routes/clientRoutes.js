@@ -5,7 +5,13 @@ module.exports = function(app) {
 
   // todoList Routes
   app.route('/clients')
-    .get(client.getAllClients)
+      .get(client.getAllClients)
+      .post(client.postClient)
+
+  app.route('/client/:id')
+      .get(client.getClientById)
+      .put(client.updateClient)
+      .delete(client.deleteClient);
 };
 
 
