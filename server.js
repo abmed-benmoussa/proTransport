@@ -11,8 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(timeout('1h'))
 
-var routes = require('./api/routes/clientRoutes'); //importing route
-routes(app); //register the route
+var clientRoutes = require('./api/routes/clientRoutes'); //importing route
+var vehiculeRoutes = require('./api/routes/vehiculeRoutes'); //importing route
+clientRoutes(app); //register the route
+vehiculeRoutes(app); 
+
 
 
 

@@ -3,36 +3,36 @@ process.env.NODE_DEBUG = 'fs';
 
 var db = require('../../dbconnection'); //reference of dbconnection.js  
 
-var client = {  
-    getAllClients: function(req,res) {  
-        db.query('Select * from ajt_client', function (error, results, fields) {
+var Vehicule = {  
+    getAllVehicules: function(req,res) {  
+        db.query('Select * from ajt_vehicle', function (error, results, fields) {
             if (error) throw error;
             res.json({"status": 200, "error": null, "response": results});
         });
     },
-    postClient: function(req,res) {  
+    postVehicule: function(req,res) {  
         var postData  = req.body;
 
-        db.query('INSERT INTO ajt_client SET ?', postData, function (error, results, fields) {
+        db.query('INSERT INTO ajt_vehicle SET ?', postData, function (error, results, fields) {
            if (error) throw error;
            res.end(JSON.stringify(results));
          });
     },
-    getClientById: function(req,res) {  
-        db.query('Select * from ajt_client where id=?', [req.params.id], function (error, results, fields) {
+    getVehiculeById: function(req,res) {  
+        db.query('Select * from ajt_vehicle where id=?', [req.params.id], function (error, results, fields) {
             if (error) throw error;
             res.json({"status": 200, "error": null, "response": results});
         });
     },
-    updateClient: function(req,res) {  
+    updateVehicule: function(req,res) {  
         var postData  = req.body;
-        db.query('update ajt_client SET `nom`=? where id=?', [postData.nom,postData.id], function (error, results, fields) {
+        db.query('update ajt_vehicle SET `nom`=? where id=?', [postData.nom,postData.id], function (error, results, fields) {
             if (error) throw error;
             res.json({"status": 200, "error": null, "response": results});
         });
     },
-    deleteClient: function(req,res) {  
-        db.query('delete from ajt_client WHERE `id`=?', [req.body.id], function (error, results, fields) {
+    deleteVehicule: function(req,res) {  
+        db.query('delete from ajt_vehicle WHERE `id`=?', [req.body.id], function (error, results, fields) {
             if (error) throw error;
             res.json({"status": 200, "error": null, "response": results});
         });
@@ -40,4 +40,4 @@ var client = {
 };  
 
 
-module.exports = client;  
+module.exports = Vehicule;  
